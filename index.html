@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudyBuddy - Student Productivity Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script async="async" data-cfasync="false" src="//pl27910558.effectivegatecpm.com/ccaa265c3565b48aea649dab813e764f/invoke.js"></script>
     <style>
         :root {
             --primary: #6C63FF;
@@ -1515,15 +1514,6 @@
         </div>
     </section>
 
-    <!-- Ads Section -->
-    <section class="ads-section">
-        <div class="container">
-            <div class="ads-container">
-                <div id="container-ccaa265c3565b48aea649dab813e764f"></div>
-            </div>
-        </div>
-    </section>
-
     <!-- Features Section -->
     <section id="features">
         <div class="container">
@@ -1578,15 +1568,6 @@
                     <p>Compress your study materials to save storage space while maintaining quality. Perfect for large PDFs and images.</p>
                     <a href="#" class="feature-link" id="open-compression">Compress Files <i class="fas fa-arrow-right"></i></a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ads Section -->
-    <section class="ads-section">
-        <div class="container">
-            <div class="ads-container">
-                <div id="container-ccaa265c3565b48aea649dab813e764f"></div>
             </div>
         </div>
     </section>
@@ -1670,15 +1651,6 @@
                         <p style="text-align: center; color: var(--gray);">Interactive elements will be fully functional in the actual application</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ads Section -->
-    <section class="ads-section">
-        <div class="container">
-            <div class="ads-container">
-                <div id="container-ccaa265c3565b48aea649dab813e764f"></div>
             </div>
         </div>
     </section>
@@ -1794,20 +1766,6 @@
     <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <div class="container">
-            <!-- Dashboard Ads -->
-            <div class="dashboard-ads">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : 'eb8034cd8fcf06b455190200ff0ae421',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/eb8034cd8fcf06b455190200ff0ae421/invoke.js"></script>
-            </div>
-
             <div class="dashboard-header">
                 <h1 class="dashboard-title">Study Dashboard</h1>
                 <button class="btn btn-outline" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -2533,7 +2491,6 @@
             document.getElementById('demo').style.display = 'none';
             document.querySelector('footer').style.display = 'none';
             document.getElementById('about').style.display = 'none';
-            document.querySelectorAll('.ads-section').forEach(ads => ads.style.display = 'none');
             dashboard.style.display = 'block';
             
             // Initialize calendar
@@ -2560,7 +2517,6 @@
             document.getElementById('demo').style.display = 'block';
             document.querySelector('footer').style.display = 'block';
             document.getElementById('about').style.display = 'block';
-            document.querySelectorAll('.ads-section').forEach(ads => ads.style.display = 'block');
             dashboard.style.display = 'none';
             
             // Scroll to top
@@ -2733,19 +2689,19 @@
             updateTimerDisplay();
         });
         
-        // Calendar
+        // Calendar - FIXED VERSION
         let currentDate = new Date();
         
         function initializeCalendar() {
             renderCalendar(currentDate);
             
             prevMonthBtn.addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() - 1);
+                currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
                 renderCalendar(currentDate);
             });
             
             nextMonthBtn.addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() + 1);
+                currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
                 renderCalendar(currentDate);
             });
         }
@@ -2804,6 +2760,15 @@
                 });
                 
                 calendarGrid.appendChild(dayElement);
+            }
+            
+            // Fill remaining cells to complete the grid (if needed)
+            const totalCells = 42; // 6 rows × 7 days
+            const currentCells = calendarGrid.children.length;
+            for (let i = currentCells; i < totalCells; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-day';
+                calendarGrid.appendChild(emptyCell);
             }
         }
         
